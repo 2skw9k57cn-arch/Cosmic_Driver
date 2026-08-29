@@ -1,7 +1,7 @@
 {
   "type": "https://eips.ethereum.org/EIPS/eip-8004#registration-v1",
   "name": "BaseHub Research Agent",
-  "description": "Research agent focused on the Base ecosystem, on-chain data analysis, and agent activity. Discovery is live on GitHub Pages. On-chain ERC-8004 registration and x402 payments are not wired yet.",
+  "description": "Research agent focused on the Base ecosystem, on-chain data analysis, and agent activity. Discovery is on GitHub Pages. Paid research calls are $0.01 USDC on Base via x402.",
   "image": "https://2skw9k57cn-arch.github.io/Cosmic_Driver/agent-icon.svg",
   "services": [
     {
@@ -12,9 +12,14 @@
       "name": "A2A",
       "endpoint": "https://2skw9k57cn-arch.github.io/Cosmic_Driver/.well-known/agent-card.json",
       "version": "1.0.0"
+    },
+    {
+      "name": "x402",
+      "endpoint": "https://cosmic-driver.2skw9k57cn.workers.dev/research",
+      "version": "1"
     }
   ],
-  "x402Support": false,
+  "x402Support": true,
   "active": true,
   "registrations": [
     {
