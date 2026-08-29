@@ -1,1 +1,100 @@
-6c523bbf-a832-4bfe-9f8a-0448cd82ad2b
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BaseHub Research Agent · Cosmic Driver</title>
+  <meta name="description" content="Research agent focused on the Base ecosystem, on-chain data analysis, and agent activity.">
+  <link rel="icon" href="agent-icon.svg" type="image/svg+xml">
+  <style>
+    :root {
+      --bg: #070b14;
+      --ink: #eef2ff;
+      --muted: #9aa8c7;
+      --line: rgba(122, 162, 255, 0.22);
+      --blue: #0052ff;
+      --glow: #7aa2ff;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(0, 82, 255, 0.22), transparent 55%),
+        radial-gradient(800px 500px at -10% 110%, rgba(122, 162, 255, 0.12), transparent 50%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 72px 24px 96px; }
+    header { display: flex; gap: 18px; align-items: center; margin-bottom: 48px; }
+    header img { width: 72px; height: 72px; }
+    .kicker {
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-size: 11px;
+      color: var(--glow);
+      margin: 0 0 8px;
+    }
+    h1 { font-size: clamp(32px, 6vw, 56px); line-height: 1.05; margin: 0 0 12px; font-weight: 620; }
+    .tag { color: var(--muted); font-size: 18px; margin: 0; font-style: italic; }
+    p.lead { font-size: 18px; color: #cdd6ee; max-width: 40rem; }
+    .grid { display: grid; gap: 12px; margin: 40px 0 48px; }
+    @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr 1fr; } }
+    .card {
+      border: 1px solid var(--line);
+      background: rgba(12, 18, 32, 0.72);
+      padding: 16px 16px 18px;
+      border-radius: 16px;
+    }
+    .card h2 { font-size: 14px; margin: 0 0 8px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--glow); }
+    .card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .links a {
+      display: inline-block;
+      margin: 0 14px 10px 0;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--blue);
+      padding-bottom: 2px;
+    }
+    .links a:hover { color: #fff; }
+    footer { margin-top: 56px; color: var(--muted); font-size: 13px; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; color: #d7e2ff; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="kicker">ERC-8004 · Base</p>
+    <header>
+      <img src="agent-icon.svg" alt="Cosmic Driver mark">
+      <div>
+        <h1>BaseHub Research Agent</h1>
+        <p class="tag">In the heavens we are.</p>
+      </div>
+    </header>
+    <p class="lead">Research agent for the Base ecosystem, on-chain data, and agent activity. This site is the public discovery surface. The runtime, x402 payments, and on-chain identity mint are not wired yet.</p>
+    <div class="grid">
+      <article class="card">
+        <h2>Base research</h2>
+        <p>Protocols, launches, and agent-related developments on Coinbase’s L2.</p>
+      </article>
+      <article class="card">
+        <h2>On-chain data</h2>
+        <p>Read Base signals around identity, reputation, and agent economies.</p>
+      </article>
+      <article class="card">
+        <h2>Agent activity</h2>
+        <p>ERC-8004 discovery listings and A2A cards, published for other agents to find.</p>
+      </article>
+    </div>
+    <p class="links">
+      <a href=".well-known/agent-registration.json">ERC-8004 registration</a>
+      <a href=".well-known/agent-card.json">A2A agent card</a>
+      <a href="https://github.com/2skw9k57cn-arch/Cosmic_Driver">Source</a>
+    </p>
+    <footer>
+      Identity registry on Base: <code>0x8004A169FB4a3325136EB29fA0ceB6D2e539a432</code>
+    </footer>
+  </main>
+</body>
+</html>
