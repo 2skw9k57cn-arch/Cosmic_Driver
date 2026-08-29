@@ -1,1 +1,10 @@
-data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkNvc21pYyBEcml2ZXIiPgogIDxyZWN0IHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiByeD0iNTYiIGZpbGw9IiMwNzBCMTQiLz4KICA8Y2lyY2xlIGN4PSIxMjgiIGN5PSIxMjgiIHI9Ijc4IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDUyRkYiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iMC4zNSIvPgogIDxjaXJjbGUgY3g9IjEyOCIgY3k9IjEyOCIgcj0iNTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzdBQTJGRiIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPGNpcmNsZSBjeD0iMTI4IiBjeT0iMTI4IiByPSIxMCIgZmlsbD0iI0Y0RjdGRiIvPgogIDxwYXRoIGQ9Ik0xMjggMzYgTDEzNCA4NiBMMTI4IDc4IEwxMjIgODYgWiIgZmlsbD0iI0Y0RjdGRiIvPgogIDxjaXJjbGUgY3g9IjE4OCIgY3k9Ijc0IiByPSIzLjUiIGZpbGw9IiM5REI3RkYiLz4KICA8Y2lyY2xlIGN4PSI3MiIgY3k9IjE2OCIgcj0iMi41IiBmaWxsPSIjQzlENkZGIi8+CiAgPGNpcmNsZSBjeD0iMTk2IiBjeT0iMTY0IiByPSIyIiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjgiLz4KPC9zdmc+Cg==
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Cosmic Driver">
+  <rect width="256" height="256" rx="56" fill="#070B14"/>
+  <circle cx="128" cy="128" r="78" fill="none" stroke="#0052FF" stroke-width="3" opacity="0.35"/>
+  <circle cx="128" cy="128" r="52" fill="none" stroke="#7AA2FF" stroke-width="2"/>
+  <circle cx="128" cy="128" r="10" fill="#F4F7FF"/>
+  <path d="M128 36 L134 86 L128 78 L122 86 Z" fill="#F4F7FF"/>
+  <circle cx="188" cy="74" r="3.5" fill="#9DB7FF"/>
+  <circle cx="72" cy="168" r="2.5" fill="#C9D6FF"/>
+  <circle cx="196" cy="164" r="2" fill="#FFFFFF" opacity="0.8"/>
+</svg>
