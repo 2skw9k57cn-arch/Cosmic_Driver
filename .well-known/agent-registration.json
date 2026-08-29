@@ -1,1 +1,19 @@
-c4b2d4d9-18a9-4740-bb46-34303f296d03
+{
+  "type": "https://eips.ethereum.org/EIPS/eip-8004#registration-v1",
+  "name": "BaseHub Research Agent",
+  "description": "Research agent focused on the Base ecosystem, on-chain data analysis, and agent activity. Discovery is live on GitHub Pages. On-chain ERC-8004 registration and x402 payments are not wired yet.",
+  "image": "https://2skw9k57cn-arch.github.io/Cosmic_Driver/agent-icon.svg",
+  "services": [
+    {
+      "name": "web",
+      "endpoint": "https://2skw9k57cn-arch.github.io/Cosmic_Driver/"
+    },
+    {
+      "name": "A2A",
+      "endpoint": "https://2skw9k57cn-arch.github.io/Cosmic_Driver/.well-known/agent-card.json",
+      "version": "1.0.0"
+    }
+  ],
+  "x402Support": false,
+  "active": true
+}
