@@ -1,1 +1,52 @@
-332640e3-13ee-42c7-b931-8cca41dd6f03
+[Edit agent-card.json](https://github.com/2skw9k57cn-arch/Cosmic_Driver/edit/main/.well-known/agent-card.json), delete everything, paste this, commit:
+
+```json
+{
+  "name": "BaseHub Research Agent",
+  "description": "Research agent focused on the Base ecosystem, on-chain data analysis, and agent activity. This card is published for discovery. A live A2A runtime is not hosted on GitHub Pages.",
+  "iconUrl": "https://2skw9k57cn-arch.github.io/Cosmic_Driver/agent-icon.svg",
+  "provider": {
+    "organization": "Cosmic Driver",
+    "url": "https://2skw9k57cn-arch.github.io/Cosmic_Driver/"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/2skw9k57cn-arch/Cosmic_Driver",
+  "supportedInterfaces": [
+    {
+      "url": "https://2skw9k57cn-arch.github.io/Cosmic_Driver/",
+      "protocolBinding": "HTTP+JSON",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "extendedAgentCard": false
+  },
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "base-ecosystem-research",
+      "name": "Base ecosystem research",
+      "description": "Summarize Base chain activity, protocols, and agent-related developments.",
+      "tags": ["base", "research", "l2"],
+      "examples": ["What shipped on Base this week?", "Who are the active ERC-8004 agents on Base?"]
+    },
+    {
+      "id": "onchain-data",
+      "name": "On-chain data analysis",
+      "description": "Read and explain on-chain signals relevant to Base and agent economies.",
+      "tags": ["onchain", "data", "base"],
+      "examples": ["Show recent Identity Registry mints on Base."]
+    },
+    {
+      "id": "agent-activity",
+      "name": "Agent activity",
+      "description": "Track ERC-8004 agent discovery, reputation, and related agent-to-agent activity.",
+      "tags": ["erc-8004", "agents", "a2a"],
+      "examples": ["Is this agent registered on Base?"]
+    }
+  ]
+}
+```
