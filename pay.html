@@ -44,7 +44,7 @@
     btn.onclick = async () => {
       try {
         if (!window.ethereum) {
-          log("No wallet found. Open this page in a browser with Coinbase Wallet or MetaMask.");
+          log("No wallet found. Open this page in Coinbase Wallet or MetaMask.");
           return;
         }
         btn.disabled = true;
@@ -73,8 +73,9 @@
           }
         }
 
-        const validAfter = "0";
-        const validBefore = String(Math.floor(Date.now() / 1000) + 3600);
+        const now = Math.floor(Date.now() / 1000);
+        const validAfter = String(now);
+        const validBefore = String(now + 50);
         const n = nonce();
         const typed = {
           types: {
@@ -110,7 +111,7 @@
           },
         };
 
-        log("Sign the $0.01 USDC payment in your wallet…");
+        log("Sign the $0.01 USDC payment now…");
         const signature = await ethereum.request({
           method: "eth_signTypedData_v4",
           params: [from, JSON.stringify(typed)],
