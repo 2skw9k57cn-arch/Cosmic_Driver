@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pay $0.01 · BaseHub Research Agent</title>
+  <style>
+    body { font-family: ui-sans-serif, system-ui, sans-serif; background: #070b14; color: #eef2ff; margin: 0; padding: 48px 24px; }
+    main { max-width: 640px; margin: 0 auto; }
+    h1 { font-size: 28px; margin: 0 0 8px; }
+    p { color: #9aa8c7; }
+    button { background: #0052ff; color: #fff; border: 0; border-radius: 10px; padding: 12px 18px; font-size: 16px; cursor: pointer; }
+    button:disabled { opacity: 0.6; cursor: wait; }
+    pre { white-space: pre-wrap; word-break: break-word; background: #0c1220; padding: 16px; border-radius: 12px; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Pay $0.01 USDC</h1>
+    <p>Connect a wallet on Base, sign once, and call the research endpoint. Funds go to cosmicdriver.base.eth.</p>
+    <p>
+      <button id="pay">Connect wallet and pay</button>
+    </p>
+    <pre id="out">Waiting…</pre>
+  </main>
+  <script>
+    const WORKER = "https://cosmic-driver.2skw9k57cn.workers.dev/research?q=agent+73364";
+    const USDC = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913";
+    const PAY_TO = "0x1b81D681Dab4a24714738C14deE6BdfF6eAaa432";
+    const VALUE = "10000";
+    const out = document.getElementById("out");
+    const btn = document.getElementById("pay");
+
+    function log(x) {
+      out.textContent = typeof x === "string" ? x : JSON.stringify(x, null, 2);
+    }
+
+    function nonce() {
+      const a = new Uint8Array(32);
+      crypto.getRandomValues(a);
+      return "0x" + Array.from(a).map((b) => b.toString(16).padStart(2, "0")).join("");
+    }
+
+    btn.onclick = async () => {
+      try {
+        if (!window.ethereum) {
+          log("No wallet found. Open this page in a browser with Coinbase Wallet or MetaMask.");
+          return;
+        }
+        btn.disabled = true;
+        log("Connecting wallet…");
+        const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+        const from = accounts[0];
+        try {
+          await ethereum.request({
+            method: "wallet_switchEthereumChain",
+            params: [{ chainId: "0x2105" }],
+          });
+        } catch (e) {
+          if (e && e.code === 4902) {
+            await ethereum.request({
+              method: "wallet_addEthereumChain",
+              params: [{
+                chainId: "0x2105",
+                chainName: "Base",
+                nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
+                rpcUrls: ["https://mainnet.base.org"],
+                blockExplorerUrls: ["https://basescan.org"],
+              }],
+            });
+          } else {
+            throw e;
+          }
+        }
+
+        const validAfter = "0";
+        const validBefore = String(Math.floor(Date.now() / 1000) + 3600);
+        const n = nonce();
+        const typed = {
+          types: {
+            EIP712Domain: [
+              { name: "name", type: "string" },
+              { name: "version", type: "string" },
+              { name: "chainId", type: "uint256" },
+              { name: "verifyingContract", type: "address" },
+            ],
+            TransferWithAuthorization: [
+              { name: "from", type: "address" },
+              { name: "to", type: "address" },
+              { name: "value", type: "uint256" },
+              { name: "validAfter", type: "uint256" },
+              { name: "validBefore", type: "uint256" },
+              { name: "nonce", type: "bytes32" },
+            ],
+          },
+          domain: {
+            name: "USD Coin",
+            version: "2",
+            chainId: 8453,
+            verifyingContract: USDC,
+          },
+          primaryType: "TransferWithAuthorization",
+          message: {
+            from,
+            to: PAY_TO,
+            value: VALUE,
+            validAfter,
+            validBefore,
+            nonce: n,
+          },
+        };
+
+        log("Sign the $0.01 USDC payment in your wallet…");
+        const signature = await ethereum.request({
+          method: "eth_signTypedData_v4",
+          params: [from, JSON.stringify(typed)],
+        });
+
+        const payload = {
+          x402Version: 1,
+          scheme: "exact",
+          network: "base",
+          payload: {
+            signature,
+            authorization: {
+              from,
+              to: PAY_TO,
+              value: VALUE,
+              validAfter,
+              validBefore,
+              nonce: n,
+            },
+          },
+        };
+        const header = btoa(JSON.stringify(payload));
+        log("Payment signed. Calling research…");
+        const res = await fetch(WORKER, {
+          headers: {
+            "X-PAYMENT": header,
+            "PAYMENT-SIGNATURE": header,
+          },
+        });
+        const text = await res.text();
+        log("HTTP " + res.status + "\n" + text);
+      } catch (err) {
+        log(err && err.message ? err.message : String(err));
+      } finally {
+        btn.disabled = false;
+      }
+    };
+  </script>
+</body>
+</html>
