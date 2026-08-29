@@ -1,6 +1,3 @@
-[Edit agent-card.json](https://github.com/2skw9k57cn-arch/Cosmic_Driver/edit/main/.well-known/agent-card.json), delete everything, paste this, commit:
-
-```json
 {
   "name": "BaseHub Research Agent",
   "description": "Research agent focused on the Base ecosystem, on-chain data analysis, and agent activity. This card is published for discovery. A live A2A runtime is not hosted on GitHub Pages.",
